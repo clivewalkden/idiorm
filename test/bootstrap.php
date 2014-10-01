@@ -9,9 +9,53 @@ require_once dirname(__FILE__) . '/../idiorm.php';
  */
 class MockPDOStatement extends PDOStatement {
    private $current_row = 0;
+   private $statement = NULL;
+   private $bindParams = array();
    
-   public function __construct() {}
-   public function execute($params) {}
+   /**
+    * Store the statement that gets passed to the constructor
+    */
+   public function __construct($statement) {
+       $this->statement = $statement;
+   }
+
+   /**
+    * Check that the array
+    */
+   public function execute($params = NULL) {
+       $count = 0;
+       $m = array();
+       if (is_null($params)) $params = $this->bindParams;
+       if (preg_match_all('/"[^"\\\\]*(?:\\?)[^"\\\\]*"|\'[^\'\\\\]*(?:\\?)[^\'\\\\]*\'|(\\?)/', $this->statement, $m, PREG_SET_ORDER)) {
+           $count = count($m);
+           for ($v = 0; $v < $count; $v++) {
+               if (count($m[$v]) == 1) unset($m[$v]);
+           }
+           $count = count($m);
+           for ($i = 0; $i < $count; $i++) {
+               if (!isset($params[$i])) {
+                   ob_start();
+                   var_dump($m, $params);
+                   $output = ob_get_clean();
+                   throw new Exception('Incorrect parameter count. Expected ' . $count . ' got ' . count($params) . ".\n" . $this->statement . "\n" . $output);
+               }
+           }
+       }
+   }
+
+   /**
+    * Add data to arrays
+    */
+   public function bindParam($index, $value, $type)
+   {
+       // Do check on index, and type
+       if (!is_int($index)) throw new Exception('Incorrect parameter type. Expected $index to be an integer.');
+       if (!is_int($type) || ($type != PDO::PARAM_STR && $type != PDO::PARAM_NULL && $type != PDO::PARAM_BOOL && $type != PDO::PARAM_INT))
+           throw new Exception('Incorrect parameter type. Expected $type to be an integer.');
+
+       // Add param to array
+       $this->bindParams[$index - 1] = $value;
+   }
    
    /**
     * Return some dummy data
