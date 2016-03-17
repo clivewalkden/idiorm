@@ -1,7 +1,7 @@
 Idiorm
 ======
 
-[![Build Status](https://travis-ci.org/j4mie/idiorm.png?branch=master)](https://travis-ci.org/j4mie/idiorm) [![Latest Stable Version](https://poser.pugx.org/j4mie/idiorm/v/stable.png)](https://packagist.org/packages/j4mie/idiorm) [![Total Downloads](https://poser.pugx.org/j4mie/idiorm/downloads.png)](https://packagist.org/packages/j4mie/idiorm) [![Code Climate](https://codeclimate.com/github/j4mie/idiorm/badges/gpa.svg)](https://codeclimate.com/github/j4mie/idiorm)
+[![Build Status](https://travis-ci.org/clivewalkden/idiorm.svg?branch=master)](https://travis-ci.org/clivewalkden/idiorm)
 
 [http://j4mie.github.com/idiormandparis/](http://j4mie.github.com/idiormandparis/)
 
@@ -95,7 +95,7 @@ Changelog
 * Add a RAW JOIN source to the query [[moiseevigor](https://github.com/moiseevigor)] - [issue #163](https://github.com/j4mie/idiorm/issues/163)
 * offsetExists() should return true for null values, resolves [#181](https://github.com/j4mie/idiorm/issues/181) [[cainmi](https://github.com/cainmi)] - [issue #214](https://github.com/j4mie/idiorm/pull/214)
 * Custom cache callback functions [[peter-mw](https://github.com/peter-mw)] - [issue #216](https://github.com/j4mie/idiorm/pull/216)
-* Restrict null primary keys on update/delete, resolves [#203](https://github.com/j4mie/idiorm/issues/203) [[cainmi](https://github.com/cainmi)] - [issue #205](https://github.com/j4mie/idiorm/issues/205) 
+* Restrict null primary keys on update/delete, resolves [#203](https://github.com/j4mie/idiorm/issues/203) [[cainmi](https://github.com/cainmi)] - [issue #205](https://github.com/j4mie/idiorm/issues/205)
 * Ensure parameters treated by type correctly [[charsleysa](https://github.com/charsleysa)] & [[SneakyBobito](https://github.com/SneakyBobito)] - [issue #206](https://github.com/j4mie/idiorm/issues/206) & [issue #208](https://github.com/j4mie/idiorm/issues/208)
 * Reduce the type casting on aggregate functions to allow characters [[herroffizier](https://github.com/herroffizier)] - [issue #150](https://github.com/j4mie/idiorm/issues/150)
 * Prevent invalid method calls from triggering infinite recursion [[michaelward82](https://github.com/michaelward82)] - [issue #152](https://github.com/j4mie/idiorm/issues/152)
