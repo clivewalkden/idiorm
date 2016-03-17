@@ -1,5 +1,7 @@
 <?php
 
+use Sozocms\Debug\Debug;
+
     /**
      *
      * Idiorm
@@ -447,7 +449,7 @@
          * @return bool
          */
         protected static function _log_query($query, $parameters, $connection_name, $query_time) {
-            debug::sql($query, $parameters, $query_time);
+            Debug::sql($query, $parameters, $query_time);
 
             // If logging is not enabled, do nothing
             if (!self::$_config[$connection_name]['logging']) {
